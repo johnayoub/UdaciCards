@@ -1,4 +1,4 @@
-import { Permissions, Notifications } from 'expo';
+import { Notifications, Permissions } from 'expo';
 import { getQuizStatus } from "../api/quizStatusApi";
 
 function createNotification() {
@@ -18,8 +18,6 @@ function createNotification() {
 }
 
 function showNotification() {
-    console.log('show notification');
-
     Notifications.cancelAllScheduledNotificationsAsync();
 
     const notificationTime = new Date();
@@ -44,8 +42,8 @@ function showNotificationIfRequired() {
 
 export function setLocalNotification() {
     Permissions.getAsync(Permissions.NOTIFICATIONS)
-        .then(({ status }) => {
-            if ( status === 'denied') {
+        .then(({status}) => {
+            if (status === 'denied') {
                 return;
             }
 
@@ -56,8 +54,8 @@ export function setLocalNotification() {
             }
 
             Permissions.askAsync(Permissions.NOTIFICATIONS)
-                .then(({ status }) => {
-                    if ( status !== 'granted') {
+                .then(({status}) => {
+                    if (status !== 'granted') {
                         return;
                     }
 

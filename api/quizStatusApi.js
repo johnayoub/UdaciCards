@@ -3,9 +3,10 @@ import { AsyncStorage } from 'react-native';
 const KEY = 'UdaciCards:quizStatus';
 
 function createTodayDateKey() {
-    const date = new Date();
+    const date = new Date(),
+          key = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
-    return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    return key;
 }
 
 function getQuizStatusObject() {
